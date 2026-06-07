@@ -236,19 +236,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .chat-bubble {
-  margin-top: auto;
-  align-self: flex-end;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 10px;
   color: white;
   font-weight: 500;
   cursor: pointer;
+  background: rgba(20, 20, 20, 0.8);
+  padding: 10px 10px 10px 20px;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s, border-color 0.3s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.chat-bubble:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.5);
 }
 
 .chat-icon {
-  background: white;
-  color: black;
+  background: linear-gradient(135deg, #ff6b6b, #ff4757);
+  color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -256,6 +271,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: transform 0.3s;
+}
+
+.chat-bubble:hover .chat-icon {
+  transform: scale(1.1);
 }
 
 .chat-icon::after {

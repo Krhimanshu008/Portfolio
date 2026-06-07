@@ -87,8 +87,7 @@ function App() {
             </a>
             
             <div className="socials">
-              <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/himanshu-kumar-807598142" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
           </div>
 
