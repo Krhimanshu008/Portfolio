@@ -319,27 +319,27 @@ function App() {
       {showContact && (
         <div className="project-modal-overlay" onClick={() => setShowContact(false)}>
           <div className="contact-modal-content project-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-modal-btn" onClick={() => setShowContact(false)}>&times;</button>
-            <h3 style={{ fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '10px', color: '#fff' }}>Let's Chat</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '30px', fontSize: '1.1rem' }}>
-              Have a project in mind or want to discuss an opportunity? Drop a message below and it will be sent directly to my email!
-            </p>
-            <form onSubmit={handleContactSubmit} className="contact-form">
-              {formSuccess ? (
-                <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in' }}>
-                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b6b, #ff4757)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', boxShadow: '0 10px 20px rgba(255, 107, 107, 0.3)' }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </div>
-                  <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px', fontFamily: 'Playfair Display' }}>Message Sent!</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>Thank you for reaching out. I'll get back to you shortly.</p>
-                  <button type="button" onClick={() => { setShowContact(false); setFormSuccess(false); }} className="contact-submit-btn" style={{ background: 'transparent', border: '1px solid #ff6b6b', color: '#ff6b6b' }}>
-                    Close
-                  </button>
+            {formSuccess ? (
+              <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b6b, #ff4757)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', boxShadow: '0 10px 20px rgba(255, 107, 107, 0.3)' }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                 </div>
-              ) : (
-                <>
+                <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px', fontFamily: 'Playfair Display' }}>Message Sent!</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>Thank you for reaching out. I'll get back to you shortly.</p>
+                <button type="button" onClick={() => { setShowContact(false); setFormSuccess(false); }} className="contact-submit-btn" style={{ cursor: 'pointer', background: 'transparent', border: '1px solid #ff6b6b', color: '#ff6b6b' }}>
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <button className="close-modal-btn" onClick={() => setShowContact(false)}>&times;</button>
+                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '10px', color: '#fff' }}>Let's Chat</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '30px', fontSize: '1.1rem' }}>
+                  Have a project in mind or want to discuss an opportunity? Drop a message below and it will be sent directly to my email!
+                </p>
+                <form onSubmit={handleContactSubmit} className="contact-form">
                   <div className="form-group">
                     <input type="text" name="name" placeholder="Your Name" required className="contact-input" />
                   </div>
@@ -352,9 +352,9 @@ function App() {
                   <button type="submit" className="contact-submit-btn" disabled={isSubmitting}>
                     {isSubmitting ? 'Sending...' : 'Send Message \u2192'}
                   </button>
-                </>
-              )}
-            </form>
+                </form>
+              </>
+            )}
           </div>
         </div>
       )}
