@@ -34,10 +34,6 @@ function App() {
       
       if (response.ok) {
         setFormSuccess(true);
-        setTimeout(() => {
-          setShowContact(false);
-          setFormSuccess(false);
-        }, 3000);
       } else {
         alert('Failed to send message. Please try again later.');
       }
@@ -337,7 +333,10 @@ function App() {
                     </svg>
                   </div>
                   <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px', fontFamily: 'Playfair Display' }}>Message Sent!</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Thank you for reaching out. I'll get back to you shortly.</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '30px' }}>Thank you for reaching out. I'll get back to you shortly.</p>
+                  <button type="button" onClick={() => { setShowContact(false); setFormSuccess(false); }} className="contact-submit-btn" style={{ background: 'transparent', border: '1px solid #ff6b6b', color: '#ff6b6b' }}>
+                    Close
+                  </button>
                 </div>
               ) : (
                 <>
