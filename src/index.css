@@ -19,7 +19,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
@@ -29,7 +30,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
@@ -59,13 +65,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .portrait-image {
   width: 100%;
-  max-width: 900px; /* Adjust based on image aspect ratio and preference */
+  max-width: 900px;
+  /* Adjust based on image aspect ratio and preference */
   height: 100%;
   background-image: url('/Himanshu.jpeg');
-  background-size: cover; /* Cover or contain, cover blends the full height better usually */
+  background-size: cover;
+  /* Cover or contain, cover blends the full height better usually */
   background-position: center 20%;
   background-repeat: no-repeat;
-  
+
   /* Mask to smoothly fade the edges into the background */
   -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%);
@@ -84,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-.ui-layer > * {
+.ui-layer>* {
   pointer-events: auto;
 }
 
@@ -309,8 +317,10 @@ h1, h2, h3, h4, h5, h6 {
   background-image: url('/h2.jpeg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Parallax effect */
-  opacity: 0.15; /* Keep it subtle behind the text */
+  background-attachment: fixed;
+  /* Parallax effect */
+  opacity: 0.15;
+  /* Keep it subtle behind the text */
   z-index: 0;
 }
 
@@ -329,7 +339,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.5rem;
   color: var(--accent-coral);
   margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 10px;
 }
 
@@ -493,13 +503,16 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-coral);
 }
@@ -528,7 +541,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-secondary);
   border-radius: 12px;
   border: 1px solid var(--accent-cyan);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   z-index: 1000;
   overflow: hidden;
   animation: slideUp 0.3s ease-out forwards;
@@ -537,8 +550,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes slideUp {
-  0% { transform: translateY(50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .mini-tab-header {
@@ -615,17 +635,18 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px;
   position: absolute;
   z-index: 1000;
-  bottom: 150%; 
+  bottom: 150%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
   border: 1px solid var(--accent-cyan);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  pointer-events: none; /* Prevent tooltip from blocking mouse events */
+  pointer-events: none;
+  /* Prevent tooltip from blocking mouse events */
 }
 
 .info-tooltip ul {
@@ -688,13 +709,20 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
   text-align: left;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   animation: modalPop 0.3s ease-out forwards;
 }
 
 @keyframes modalPop {
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .close-modal-btn {
@@ -773,9 +801,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes pulseOpacity {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
 }
 
 /* Zoom Redirect Overlay */
@@ -794,8 +830,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes explodeScreen {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(3); opacity: 1; border-radius: 0; }
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+    border-radius: 0;
+  }
 }
 
 /* Animated Web OS Laptop Screen */
@@ -817,12 +861,17 @@ h1, h2, h3, h4, h5, h6 {
 .laptop-screen-html::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6); /* dim the wallpaper slightly */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  /* dim the wallpaper slightly */
   z-index: 1;
 }
 
-.os-logo-container, .os-boot-text {
+.os-logo-container,
+.os-boot-text {
   position: relative;
   z-index: 2;
 }
@@ -847,8 +896,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes breatheGlow {
-  0% { transform: scale(0.8); opacity: 0.2; }
-  100% { transform: scale(1.2); opacity: 0.5; }
+  0% {
+    transform: scale(0.8);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
 }
 
 .os-logo-text {
@@ -880,14 +936,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes typingLoop {
-  0%, 5% { width: 0; }
-  20%, 95% { width: 24ch; }
-  98%, 100% { width: 0; }
+
+  0%,
+  5% {
+    width: 0;
+  }
+
+  20%,
+  95% {
+    width: 24ch;
+  }
+
+  98%,
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes blinkCaret {
-  from, to { border-color: transparent; }
-  50% { border-color: #aaa; }
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #aaa;
+  }
 }
 
 /* Contact Form Styling */
@@ -903,7 +978,8 @@ h1, h2, h3, h4, h5, h6 {
   gap: 20px;
 }
 
-.contact-input, .contact-textarea {
+.contact-input,
+.contact-textarea {
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -915,7 +991,8 @@ h1, h2, h3, h4, h5, h6 {
   transition: border-color 0.3s, background 0.3s;
 }
 
-.contact-input:focus, .contact-textarea:focus {
+.contact-input:focus,
+.contact-textarea:focus {
   outline: none;
   border-color: var(--accent-cyan);
   background: rgba(255, 255, 255, 0.08);
@@ -949,6 +1026,7 @@ h1, h2, h3, h4, h5, h6 {
   .ui-layer {
     padding: 60px 40px;
   }
+
   .greeting {
     font-size: 3.5rem;
   }
@@ -965,12 +1043,13 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 40px;
   }
-  
-  .left-col, .right-col {
+
+  .left-col,
+  .right-col {
     max-width: 100%;
     align-items: center;
   }
-  
+
   .right-col {
     padding-top: 0;
   }
@@ -980,7 +1059,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 25px;
     justify-content: center;
   }
-  
+
   .greeting {
     font-size: 3rem;
   }
@@ -1000,11 +1079,11 @@ h1, h2, h3, h4, h5, h6 {
   .project-modal-content {
     padding: 25px;
   }
-  
+
   .project-modal-content h3 {
     font-size: 1.5rem;
   }
-  
+
   .laptop-wrapper {
     max-width: 300px;
   }
@@ -1014,7 +1093,7 @@ h1, h2, h3, h4, h5, h6 {
   .greeting {
     font-size: 2.5rem;
   }
-  
+
   .role {
     font-size: 1.1rem;
   }
