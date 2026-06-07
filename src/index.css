@@ -203,6 +203,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 2px solid var(--accent-coral);
   display: inline-block;
   padding-bottom: 4px;
+  align-self: flex-start;
 }
 
 .bio-heading {
