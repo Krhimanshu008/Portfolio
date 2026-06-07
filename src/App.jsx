@@ -330,8 +330,14 @@ function App() {
             </p>
             <form onSubmit={handleContactSubmit} className="contact-form">
               {formSuccess ? (
-                <div style={{ padding: '20px', background: 'rgba(0,255,0,0.1)', color: '#0f0', borderRadius: '8px', textAlign: 'center' }}>
-                  Message sent successfully!
+                <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in' }}>
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b6b, #ff4757)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', boxShadow: '0 10px 20px rgba(255, 107, 107, 0.3)' }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px', fontFamily: 'Playfair Display' }}>Message Sent!</h3>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Thank you for reaching out. I'll get back to you shortly.</p>
                 </div>
               ) : (
                 <>
