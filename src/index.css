@@ -195,11 +195,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .expert-tag {
   color: var(--accent-coral);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 1000;
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent-coral);
+  display: inline-block;
+  padding-bottom: 4px;
 }
 
 .bio-heading {
