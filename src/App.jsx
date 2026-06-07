@@ -320,7 +320,7 @@ function App() {
         <div className="project-modal-overlay" onClick={() => setShowContact(false)}>
           <div className="contact-modal-content project-modal-content" onClick={(e) => e.stopPropagation()}>
             {formSuccess ? (
-              <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in' }}>
+              <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in', userSelect: 'none', cursor: 'default' }}>
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b6b, #ff4757)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', boxShadow: '0 10px 20px rgba(255, 107, 107, 0.3)' }}>
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
