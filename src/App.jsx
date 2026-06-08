@@ -161,8 +161,17 @@ function App() {
               
               <div className="work-card">
                 <div className="work-header">
+                  <h4>Bookkeeping, Bank & Vendor Reconciliation</h4>
+                  <span className="status success">Executed Successfully</span>
+                </div>
+                <p>Managed end-to-end bookkeeping, ensuring accurate recording of financial transactions, and performed meticulous bank and vendor reconciliations to maintain ledger accuracy and resolve discrepancies.</p>
+                <div className="result-text"><strong>Result:</strong> Maintained up-to-date and error-free books of accounts, preventing financial leakages and ensuring smooth audit workflows.</div>
+              </div>
+
+              <div className="work-card">
+                <div className="work-header">
                   <h4>Statutory Audits & Financial Ops</h4>
-                  <span className="status success">Succeeded</span>
+                  <span className="status success">Executed Successfully</span>
                 </div>
                 <p>Managed end-to-end statutory audits for corporate clients and oversaw full-cycle financial operations, from books of accounts to audit readiness.</p>
                 <div className="result-text"><strong>Result:</strong> Built robust compliance processes and ensured highly accurate regulatory filings.</div>
@@ -171,7 +180,7 @@ function App() {
               <div className="work-card">
                 <div className="work-header">
                   <h4>Tax Compliances & Regulatory Filings</h4>
-                  <span className="status success">Succeeded</span>
+                  <span className="status success">Executed Successfully</span>
                 </div>
                 <p>Handled Multiples of Compliances for Corporates, Individuals and LLPs which includes MCA filings, TDS returns, and GST filings across diverse industries.</p>
                 <div className="result-text"><strong>Result:</strong> Achieved timely regulatory compliance and maintained financial integrity for 20+ & 200+ indivuduals clients .</div>
@@ -189,7 +198,7 @@ function App() {
               <div className="work-card">
                 <div className="work-header">
                   <h4>Management Reporting</h4>
-                  <span className="status success">Succeeded</span>
+                  <span className="status success">Executed Successfully</span>
                 </div>
                 <p>Prepared product-wise profitability statements and revenue analyses presented directly to senior leadership & CEO.</p>
                 <div className="result-text"><strong>Result:</strong> Enabled data-driven decisions and streamlined cross-functional workflows.</div>
@@ -225,11 +234,11 @@ function App() {
               </div>
               <div className="skill-category">
                 <h4>Accounting Software</h4>
-                <p>Zoho Books, Tally, Busy, Marg, MS Office, LibreOffice.</p>
+                <p>Zoho Books, Tally, QB, Xero, Busy, Marg, MS Office, LibreOffice.</p>
               </div>
               <div className="skill-category">
                 <h4>Tech & Automation</h4>
-                <p>Python, JavaScript, HTML/CSS, SQL, RAG, COMFYUI — actively developing.</p>
+                <p>Python, JavaScript,React, HTML/CSS, SQL, RAG, COMFYUI — actively developing.</p>
               </div>
               <div className="skill-category debate-skill-card" onClick={handleDebateClick}>
                 <h4>Debate Skill 🎤</h4>
