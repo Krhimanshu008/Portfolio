@@ -17,7 +17,7 @@ function App() {
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     const formData = new FormData(e.target);
     const data = {
       name: formData.get('name'),
@@ -31,7 +31,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      
+
       if (response.ok) {
         setFormSuccess(true);
       } else {
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="dashboard-container" style={{ flexDirection: 'column', height: 'auto', display: 'block' }}>
-      
+
       {/* =========================================
           HERO SECTION (100vh)
           ========================================= */}
@@ -70,22 +70,22 @@ function App() {
 
         {/* 2D UI Overlay Layer */}
         <div className="ui-layer">
-          
+
           {/* Left Column */}
           <div className="left-col">
             <div className="greeting-wrapper">
               <h1 className="greeting">
-                Hi,<br/>
+                Hi,<br />
                 I'm <span className="greeting-name">Himanshu</span>
               </h1>
             </div>
 
             <h2 className="role">Finance Professional & Tech Enthusiast</h2>
-            
+
             <a href="#resume" className="hire-btn">
-             About Me <span>&darr;</span>
+              About Me <span>&darr;</span>
             </a>
-            
+
             <div className="socials">
               <a href="https://www.linkedin.com/in/himanshu-kumar-807598142" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
@@ -95,19 +95,20 @@ function App() {
           <div className="right-col">
             <p className="expert-tag">Expert on</p>
             <h3 className="bio-heading">
-              Finance, Compliance & Automation<br/>
-              
+              Finance, Compliance & Automation<br />
+
             </h3>
-            
+
             <p className="bio-text">
               Looking for a professional who bridges the gap between complex financial operations and modern tech automation? Let's shake hands.
             </p>
 
             {/* Laptop SVG */}
             <div className="laptop-wrapper" onClick={handleLaptopClick}>
+              <div className="dev-tag">Under Development</div>
               <svg className="laptop-svg" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {/* Laptop Body/Screen Border */}
-                <rect x="50" y="20" width="700" height="420" rx="20" fill="#2c2c2c" stroke="#444" strokeWidth="4"/>
+                <rect x="50" y="20" width="700" height="420" rx="20" fill="#2c2c2c" stroke="#444" strokeWidth="4" />
                 <rect x="70" y="40" width="660" height="380" rx="10" fill="#050505" />
                 {/* Base */}
                 <path d="M20 450 L780 450 A 20 20 0 0 1 800 470 L0 470 A 20 20 0 0 1 20 450 Z" fill="#333" />
@@ -144,9 +145,9 @@ function App() {
       <section id="resume" className="resume-section">
         {/* Parallax Background */}
         <div className="resume-bg"></div>
-        
+
         <div className="resume-content">
-          
+
           <div className="resume-block">
             <h3>About Me</h3>
             <h4 className="developer-title">Self Proclaimed Developer & Finance Professional</h4>
@@ -158,7 +159,7 @@ function App() {
           <div className="resume-block">
             <h3>Types of Work & Results</h3>
             <div className="works-grid">
-              
+
               <div className="work-card">
                 <div className="work-header">
                   <h4>Bookkeeping, Bank & Vendor Reconciliation</h4>
@@ -213,7 +214,7 @@ function App() {
                 </div>
                 <p>An ambitious pipeline that converts raw novels (EPUB, PDF, TXT) into interactive audio-visual Webtoon experiences — automated scene extraction, AI-generated artwork, and TTS narration.</p>
                 <div className="result-text">
-                  <strong>Current Status:</strong> Rebuilding with better orchestration. Core database and NLP pipeline functional. <br/>
+                  <strong>Current Status:</strong> Rebuilding with better orchestration. Core database and NLP pipeline functional. <br />
                   <button onClick={() => setShowNovelModal(true)} style={{ background: 'transparent', border: 'none', color: 'var(--accent-coral)', textDecoration: 'underline', marginTop: '10px', display: 'inline-block', cursor: 'pointer', padding: 0, fontSize: '0.95rem', fontFamily: 'inherit' }}>Read full project details &rarr;</button>
                 </div>
               </div>
@@ -238,7 +239,7 @@ function App() {
               </div>
               <div className="skill-category">
                 <h4>Tech & Automation</h4>
-                <p>Python, JavaScript,React, HTML/CSS, SQL, RAG, COMFYUI — actively developing.</p>
+                <p>Python, JavaScript, React, HTML/CSS, SQL, RAG, COMFYUI — actively developing.</p>
               </div>
               <div className="skill-category debate-skill-card" onClick={handleDebateClick}>
                 <h4>Debate Skill 🎤</h4>
@@ -263,11 +264,11 @@ function App() {
                 🔊 When i start to loosing debates!
               </p>
             </div>
-            <video 
+            <video
               ref={videoRef}
-              src="/Debate Skill.mp4" 
-              controls 
-              autoPlay 
+              src="/Debate Skill.mp4"
+              controls
+              autoPlay
               className="debate-video"
               style={{ width: '100%', borderRadius: '8px', background: '#000', border: '1px solid rgba(255,255,255,0.1)' }}
             ></video>
@@ -282,7 +283,7 @@ function App() {
             <button className="close-modal-btn" onClick={() => setShowNovelModal(false)}>&times;</button>
             <h3>Novel Visualiser — AI Manga Studio</h3>
             <span className="status mixed" style={{ marginBottom: '25px', display: 'inline-block' }}>Failed v1 — Active Rebuild</span>
-            
+
             <p style={{ fontSize: '1.05rem', color: '#fff', marginBottom: '30px' }}>
               An ambitious pipeline that converts raw novels (EPUB, PDF, TXT) into interactive audio-visual Webtoon experiences — automated scene extraction, AI-generated artwork, and TTS narration.
             </p>
