@@ -75,6 +75,14 @@ export default async function handler(req, res) {
         subject: `New Portfolio Message from ${name}`,
         text: `You have received a new message from your portfolio!\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       });
+
+      // Send auto-reply to the sender
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email, // Send to the person who submitted the form
+        subject: `Thank you for reaching out, ${name}!`,
+        text: `Hi ${name},\n\nThank you for getting in touch! I have received your message and will get back to you as soon as possible.\n\nFor your records, here is a copy of your message:\n\n"${message}"\n\nBest regards,\nHimanshu`,
+      });
     } else {
       console.warn("Skipping Nodemailer: EMAIL_USER or EMAIL_PASS not configured in .env");
     }
