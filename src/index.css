@@ -1294,49 +1294,67 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  position: relative;
+  padding-left: 25px;
 }
+
+/* Grey track from top to bottom */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Filled progress flowing UP from B.Com to halfway of CA */
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 50px;
+  width: 2px;
+  background: linear-gradient(to top, rgba(0,210,255,0.1) 0%, var(--accent-cyan) 50%, rgba(0,210,255,0.1) 100%);
+  background-size: 100% 200%;
+  animation: flowLightUp 2s infinite linear;
+}
+
+@keyframes flowLightUp {
+  0% { background-position: 0 100%; }
+  100% { background-position: 0 0%; }
+}
+
 .timeline-item {
   display: flex;
   gap: 15px;
   position: relative;
-  padding-left: 25px;
 }
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 11px;
-  bottom: -10px;
-  width: 2px;
-  background: rgba(255,255,255,0.06);
-}
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 11px;
-  width: 2px;
-  background: var(--accent-cyan);
-}
-/* CA (1st item) is half full */
-.timeline-item:nth-child(1)::after {
-  height: 50%;
-  background: linear-gradient(to bottom, var(--accent-cyan), transparent);
-}
-/* B.Com (2nd item) is fully full */
-.timeline-item:nth-child(2)::after {
-  bottom: -10px;
-}
+
 .timeline-dot {
   position: absolute;
-  left: -4px;
-  top: 6px;
+  left: -29px; /* -25px padding + -4px centering */
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* CA (1st item) dot - Stops at mid as the active progress head */
+.timeline-item:nth-child(1) .timeline-dot {
+  top: 45px; /* Aligns perfectly with the top:50px bar end */
+  background: #fff;
+  box-shadow: 0 0 10px #00d2ff, 0 0 20px var(--accent-cyan);
+  z-index: 2;
+}
+
+/* B.Com (2nd item) dot - Completed */
+.timeline-item:nth-child(2) .timeline-dot {
+  top: 8px;
   background: var(--accent-cyan);
   box-shadow: 0 0 8px rgba(0,210,255,0.4);
-  flex-shrink: 0;
 }
 .timeline-content {
   padding-left: 5px;
