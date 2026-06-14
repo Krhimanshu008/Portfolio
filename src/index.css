@@ -1322,9 +1322,10 @@ h6 {
   bottom: -10px;
   height: 50%;
   width: 2px;
-  background: linear-gradient(to top, rgba(0,210,255,0.1) 0%, var(--accent-cyan) 50%, rgba(0,210,255,0.1) 100%);
+  background: linear-gradient(to top, var(--accent-cyan) 0%, #fff 25%, var(--accent-cyan) 50%, #fff 75%, var(--accent-cyan) 100%);
   background-size: 100% 200%;
   animation: flowLightUp 2s infinite linear;
+  box-shadow: 0 0 8px rgba(0,210,255,0.4);
 }
 
 @keyframes flowLightUp {
@@ -1365,7 +1366,7 @@ h6 {
 .timeline-item:nth-child(1) .timeline-content::before {
   content: '';
   position: absolute;
-  left: -29px;
+  left: -4px; /* Fixed alignment to center on the track */
   bottom: calc(50% - 15px); /* Exactly at the top tip of the 50% cyan fill */
   width: 10px;
   height: 10px;
