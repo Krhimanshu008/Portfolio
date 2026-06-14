@@ -69,7 +69,7 @@ export default async function handler(req, res) {
       });
 
       await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+        from: `"Himanshu Kumar" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER, // Send to yourself
         replyTo: email,
         subject: `New Portfolio Message from ${name}`,
@@ -78,7 +78,7 @@ export default async function handler(req, res) {
 
       // Send auto-reply to the sender
       await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+        from: `"Himanshu Kumar" <${process.env.EMAIL_USER}>`,
         to: email, // Send to the person who submitted the form
         subject: `Thank you for reaching out, ${name}!`,
         text: `Hi ${name},\n\nThank you for getting in touch! I have received your message and will get back to you as soon as possible.\n\nFor your records, here is a copy of your message:\n\n"${message}"\n\nBest regards,\nHimanshu`,
