@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './index.css';
 
 function App() {
@@ -8,7 +8,31 @@ function App() {
   const [showContact, setShowContact] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
+  
+  // Journey & Vision states
+  const [showFutureIdeasModal, setShowFutureIdeasModal] = useState(false);
+  const [showAdminLock, setShowAdminLock] = useState(false);
+  const [isAdminUnlocked, setIsAdminUnlocked] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [ideas, setIdeas] = useState([]);
+  const [showCollabModal, setShowCollabModal] = useState(false);
+  const [collabSuccess, setCollabSuccess] = useState(false);
+  const [isCollabSubmitting, setIsCollabSubmitting] = useState(false);
+
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (showFutureIdeasModal) {
+      fetch('/api/ideas')
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data) {
+            setIdeas(data.data);
+          }
+        })
+        .catch(err => console.error("Failed to fetch ideas", err));
+    }
+  }, [showFutureIdeasModal]);
 
   const handleDebateClick = () => {
     setShowDebate(true);
@@ -41,6 +65,73 @@ function App() {
       alert('Network error. Please try again.');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleCollabSubmit = async (e) => {
+    e.preventDefault();
+    setIsCollabSubmitting(true);
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: `[COLLAB REQUEST]: Role: ${formData.get('role')} | Proposal: ${formData.get('proposal')}`
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setCollabSuccess(true);
+      } else {
+        alert('Failed to send collab request.');
+      }
+    } catch (error) {
+      alert('Network error. Please try again.');
+    } finally {
+      setIsCollabSubmitting(false);
+    }
+  };
+
+  const handleAdminUnlock = (e) => {
+    e.preventDefault();
+    if (passwordInput === "admin123") {
+      setIsAdminUnlocked(true);
+      setShowAdminLock(false);
+      setPasswordInput("");
+    } else {
+      alert("Incorrect password");
+    }
+  };
+
+  const handleNewIdeaSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const title = formData.get('title');
+    const description = formData.get('description');
+    const tagsStr = formData.get('tags');
+    const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [];
+    
+    try {
+      const res = await fetch('/api/ideas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, description, tags })
+      });
+      if (res.ok) {
+        const newIdea = await res.json();
+        setIdeas([newIdea.data, ...ideas]);
+        e.target.reset();
+      } else {
+        alert('Failed to save idea');
+      }
+    } catch(err) {
+      console.error("Error creating idea", err);
     }
   };
 
@@ -251,6 +342,110 @@ function App() {
         </div>
       </section>
 
+      {/* =========================================
+          JOURNEY & VISION SECTION
+          ========================================= */}
+      <section id="journey" className="journey-section">
+        <div className="resume-bg"></div>
+        <div className="resume-content">
+          <div className="resume-block">
+            <h3>My Journey & Vision</h3>
+            <p className="about-text" style={{ marginBottom: '30px' }}>
+              A look into my academic progress, skill matrix, and the future projects I'm building.
+            </p>
+
+            <div className="journey-grid">
+              {/* Education Timeline */}
+              <div className="journey-card">
+                <h4 className="journey-card-title">Education & Academics</h4>
+                <div className="timeline-container">
+                  <div className="timeline-item">
+                    <div className="timeline-dot"></div>
+                    <div className="timeline-content">
+                      <h5>Chartered Accountancy (CA)</h5>
+                      <span className="timeline-date">Pursuing</span>
+                      <p>Currently navigating the complexities of advanced tax, audit, and financial reporting.</p>
+                    </div>
+                  </div>
+                  <div className="timeline-item">
+                    <div className="timeline-dot"></div>
+                    <div className="timeline-content">
+                      <h5>Bachelor of Commerce (B.Com)</h5>
+                      <span className="timeline-date">Graduated</span>
+                      <p>Built the core foundation of accounting principles, business law, and economics.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Skill Matrix */}
+              <div className="journey-card">
+                <h4 className="journey-card-title">Skill Progression</h4>
+                <div className="skill-matrix">
+                  <div className="matrix-row">
+                    <span className="matrix-label mastered">Mastered</span>
+                    <div className="matrix-tags">
+                      <span>Bookkeeping</span>
+                      <span>GST & TDS</span>
+                      <span>Bank Recon</span>
+                      <span>MIS Reporting</span>
+                    </div>
+                  </div>
+                  <div className="matrix-row">
+                    <span className="matrix-label attained">Attained</span>
+                    <div className="matrix-tags">
+                      <span>Python</span>
+                      <span>Automation</span>
+                      <span>SQL</span>
+                      <span>React</span>
+                    </div>
+                  </div>
+                  <div className="matrix-row">
+                    <span className="matrix-label learning">Learning</span>
+                    <div className="matrix-tags">
+                      <span>AI / RAG</span>
+                      <span>ComfyUI</span>
+                      <span>Full-stack Web</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Applied Knowledge */}
+              <div className="journey-card full-width">
+                <h4 className="journey-card-title">Applied Knowledge</h4>
+                <div className="applied-grid">
+                  <div className="applied-item">
+                    <span className="applied-subject">Subject: Taxation & Audit</span>
+                    <span className="applied-arrow">&rarr;</span>
+                    <span className="applied-execution">Execution: Built automated compliance trackers & tax calculators.</span>
+                  </div>
+                  <div className="applied-item">
+                    <span className="applied-subject">Subject: Tech & AI</span>
+                    <span className="applied-arrow">&rarr;</span>
+                    <span className="applied-execution">Execution: Developing 'Novel Visualiser' & RAG-based document parsers.</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Future Ideas CTA */}
+              <div className="journey-card full-width ideas-cta-card">
+                <h4 className="journey-card-title">Future Ideas & Projects</h4>
+                <p style={{ color: '#ccc', marginBottom: '15px' }}>I am constantly brainstorming and building. Want to see what's next in the pipeline?</p>
+                <div className="ideas-buttons">
+                  <button className="view-ideas-btn" onClick={() => setShowFutureIdeasModal(true)}>
+                    View Future Ideas &rarr;
+                  </button>
+                  <button className="collab-btn" onClick={() => setShowCollabModal(true)}>
+                    Let's Collaborate 🤝
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Debate Skill Mini Tab */}
       {showDebate && (
         <div className="debate-mini-tab">
@@ -321,7 +516,117 @@ function App() {
 
       {/* Zoom Redirect Overlay */}
       {isZooming && (
-        <div className="zoom-in-overlay"></div>
+        <div className="zoom-in-overlay">        </div>
+      )}
+
+      {/* Future Ideas Modal */}
+      {showFutureIdeasModal && (
+        <div className="project-modal-overlay" onClick={() => setShowFutureIdeasModal(false)}>
+          <div className="project-modal-content ideas-modal" onClick={(e) => e.stopPropagation()} style={{ position: 'relative' }}>
+            <button className="close-modal-btn" onClick={() => setShowFutureIdeasModal(false)}>&times;</button>
+            <h3 style={{ fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '20px', color: '#fff' }}>Future Ideas Sandbox</h3>
+            
+            <div className="ideas-list">
+              {ideas.length === 0 ? (
+                <p style={{ color: '#888', textAlign: 'center', padding: '40px' }}>Loading ideas... or no ideas yet!</p>
+              ) : (
+                ideas.map((idea, idx) => (
+                  <div key={idx} className="idea-item">
+                    <div className="idea-header">
+                      <h4 style={{ margin: 0, color: '#ff6b6b' }}>{idea.title}</h4>
+                      <span className="idea-status">{idea.status}</span>
+                    </div>
+                    <p style={{ color: '#ccc', marginTop: '10px', marginBottom: '10px' }}>{idea.description}</p>
+                    {idea.tags && idea.tags.length > 0 && (
+                      <div className="idea-tags">
+                        {idea.tags.map((tag, i) => <span key={i} className="idea-tag">{tag}</span>)}
+                      </div>
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
+
+            {isAdminUnlocked && (
+              <div className="admin-add-idea">
+                <h4 style={{ color: '#01baef', marginTop: '30px', borderTop: '1px solid #333', paddingTop: '20px' }}>+ Add New Idea (Admin)</h4>
+                <form onSubmit={handleNewIdeaSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <input type="text" name="title" placeholder="Idea Title" required className="contact-input" />
+                  <textarea name="description" placeholder="Description" rows="3" required className="contact-textarea"></textarea>
+                  <input type="text" name="tags" placeholder="Tags (comma separated)" className="contact-input" />
+                  <button type="submit" className="contact-submit-btn">Save Idea</button>
+                </form>
+              </div>
+            )}
+
+            {/* Lock Icon Bottom Left */}
+            <div className="admin-lock-icon" onClick={() => setShowAdminLock(true)} title="Admin Login">
+              🔒
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Admin Lock Modal */}
+      {showAdminLock && (
+        <div className="project-modal-overlay" onClick={() => setShowAdminLock(false)} style={{ zIndex: 10000 }}>
+          <div className="project-modal-content" style={{ maxWidth: '400px' }} onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={() => setShowAdminLock(false)}>&times;</button>
+            <h3 style={{ marginBottom: '20px', color: '#fff' }}>Admin Lock</h3>
+            <form onSubmit={handleAdminUnlock} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              <input 
+                type="password" 
+                placeholder="Enter Password" 
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                className="contact-input" 
+                required 
+              />
+              <button type="submit" className="contact-submit-btn">Unlock</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Collab Modal */}
+      {showCollabModal && (
+        <div className="project-modal-overlay" onClick={() => setShowCollabModal(false)}>
+          <div className="contact-modal-content project-modal-content" onClick={(e) => e.stopPropagation()}>
+            {collabSuccess ? (
+              <div style={{ padding: '40px 20px', textAlign: 'center', animation: 'fadeIn 0.5s ease-in' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #20bf55, #01baef)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                  <span style={{ fontSize: '32px', color: '#fff' }}>🤝</span>
+                </div>
+                <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px' }}>Collab Request Sent!</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '30px' }}>I've received your request and will review it soon.</p>
+                <button type="button" onClick={() => { setShowCollabModal(false); setCollabSuccess(false); }} className="contact-submit-btn" style={{ background: 'transparent', border: '1px solid #20bf55', color: '#20bf55' }}>Close</button>
+              </div>
+            ) : (
+              <>
+                <button className="close-modal-btn" onClick={() => setShowCollabModal(false)}>&times;</button>
+                <h3 style={{ fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '10px', color: '#fff' }}>Let's Collaborate</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '30px', fontSize: '1.1rem' }}>Interested in building together? Tell me about your role and what you'd like to work on.</p>
+                <form onSubmit={handleCollabSubmit} className="contact-form">
+                  <div className="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required className="contact-input" />
+                  </div>
+                  <div className="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required className="contact-input" />
+                  </div>
+                  <div className="form-group">
+                    <input type="text" name="role" placeholder="Your Role (e.g., UI Designer, Dev)" required className="contact-input" />
+                  </div>
+                  <div className="form-group">
+                    <textarea name="proposal" placeholder="What idea do you want to collaborate on?" rows="4" required className="contact-textarea"></textarea>
+                  </div>
+                  <button type="submit" className="contact-submit-btn" disabled={isCollabSubmitting}>
+                    {isCollabSubmitting ? 'Sending...' : 'Send Proposal \u2192'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
       )}
 
       {/* Contact Form Modal */}
