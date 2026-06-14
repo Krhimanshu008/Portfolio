@@ -1343,8 +1343,16 @@ h6 {
   flex-direction: column;
   gap: 25px;
   padding-left: 20px;
-  border-left: 2px solid rgba(255,255,255,0.06);
   position: relative;
+}
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 50%;
+  background: linear-gradient(to bottom, var(--accent-cyan), transparent);
 }
 .timeline-item {
   display: flex;

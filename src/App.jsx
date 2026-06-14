@@ -8,7 +8,7 @@ function App() {
   const [showContact, setShowContact] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
-  
+
   // Journey & Vision states
   const [showFutureIdeasModal, setShowFutureIdeasModal] = useState(false);
   const [showAdminLock, setShowAdminLock] = useState(false);
@@ -116,7 +116,7 @@ function App() {
     const description = formData.get('description');
     const tagsStr = formData.get('tags');
     const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [];
-    
+
     try {
       const res = await fetch('/api/ideas', {
         method: 'POST',
@@ -130,7 +130,7 @@ function App() {
       } else {
         alert('Failed to save idea');
       }
-    } catch(err) {
+    } catch (err) {
       console.error("Error creating idea", err);
     }
   };
@@ -364,7 +364,7 @@ function App() {
                     <div className="timeline-content">
                       <h5>Chartered Accountancy (CA)</h5>
                       <span className="timeline-date">Pursuing</span>
-                      <p>Currently navigating the complexities of advanced tax, audit, and financial reporting.</p>
+                      <p>Navigating the complexities of advanced tax, audit, financial management & reporting while consistently overcoming challenges for the path I have selected.</p>
                     </div>
                   </div>
                   <div className="timeline-item">
@@ -386,26 +386,32 @@ function App() {
                     <span className="matrix-label mastered">Mastered</span>
                     <div className="matrix-tags">
                       <span>Bookkeeping</span>
-                      <span>GST & TDS</span>
-                      <span>Bank Recon</span>
+                      <span>Taxation</span>
+                      <span>Corporate Laws</span>
+                      <span>GST Compliance</span>
+                      <span>Financial Statement Analysis</span>
+                      <span>Direct Tax Planning & Advisory</span>
                       <span>MIS Reporting</span>
                     </div>
                   </div>
                   <div className="matrix-row">
                     <span className="matrix-label attained">Attained</span>
                     <div className="matrix-tags">
-                      <span>Python</span>
-                      <span>Automation</span>
-                      <span>SQL</span>
-                      <span>React</span>
+                      <span>Workflow Optimization</span>
+                      <span>Process Automation (Excel / Scripts / APIs)</span>
+                      <span>Data Analytics</span>
+                      <span>API Integration</span>
                     </div>
                   </div>
                   <div className="matrix-row">
                     <span className="matrix-label learning">Learning</span>
                     <div className="matrix-tags">
-                      <span>NLP </span>
-                      <span>RAG Vector/Graph </span>
-                      <span>Cloud Computing</span>
+                      <span>IFRS, Ind AS </span>
+                      <span>UAE VAT & CT </span>
+                      <span> Income Tax Law 2025 </span>
+                      <span>Transfer Pricing & International Taxation </span>
+                      <span>AI Applications in Finance </span>
+                      <span>RAG Vector/Graph, NLPs </span>
                     </div>
                   </div>
                 </div>
@@ -525,7 +531,7 @@ function App() {
           <div className="project-modal-content ideas-modal" onClick={(e) => e.stopPropagation()} style={{ position: 'relative' }}>
             <button className="close-modal-btn" onClick={() => setShowFutureIdeasModal(false)}>&times;</button>
             <h3 style={{ fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '20px', color: '#fff' }}>Future Ideas Sandbox</h3>
-            
+
             <div className="ideas-list">
               {ideas.length === 0 ? (
                 <p style={{ color: '#888', textAlign: 'center', padding: '40px' }}>Loading ideas... or no ideas yet!</p>
@@ -574,13 +580,13 @@ function App() {
             <button className="close-modal-btn" onClick={() => setShowAdminLock(false)}>&times;</button>
             <h3 style={{ marginBottom: '20px', color: '#fff' }}>Admin Lock</h3>
             <form onSubmit={handleAdminUnlock} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <input 
-                type="password" 
-                placeholder="Enter Password" 
+              <input
+                type="password"
+                placeholder="Enter Password"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                className="contact-input" 
-                required 
+                className="contact-input"
+                required
               />
               <button type="submit" className="contact-submit-btn">Unlock</button>
             </form>
