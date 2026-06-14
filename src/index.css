@@ -1294,28 +1294,33 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 25px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
   position: relative;
   padding-left: 25px;
 }
 
-/* Grey track from top to bottom */
-.timeline-container::before {
+/* Base Grey Track for EACH independent item */
+.timeline-item::before {
   content: '';
   position: absolute;
   left: 0;
   top: 10px;
-  bottom: 0;
+  bottom: -10px;
   width: 2px;
   background: rgba(255,255,255,0.06);
 }
 
-/* Filled progress flowing UP from B.Com to halfway of CA */
-.timeline-container::after {
+/* CA (1st item) independent cyan fill */
+.timeline-item:nth-child(1)::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
-  top: 50px;
+  bottom: -10px;
+  height: 50%;
   width: 2px;
   background: linear-gradient(to top, rgba(0,210,255,0.1) 0%, var(--accent-cyan) 50%, rgba(0,210,255,0.1) 100%);
   background-size: 100% 200%;
@@ -1327,32 +1332,52 @@ h6 {
   100% { background-position: 0 0%; }
 }
 
-.timeline-item {
-  display: flex;
-  gap: 15px;
-  position: relative;
+/* B.Com (2nd item) independent cyan fill */
+.timeline-item:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  top: 10px;
+  width: 2px;
+  background: var(--accent-cyan);
 }
 
+/* Base style for dots */
 .timeline-dot {
   position: absolute;
-  left: -29px; /* -25px padding + -4px centering */
+  left: -4px; /* Centered on the 2px line (0) */
   width: 10px;
   height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-/* CA (1st item) dot - Stops at mid as the active progress head */
+/* CA (1st item) Goal Dot (At the Top) */
 .timeline-item:nth-child(1) .timeline-dot {
-  top: 45px; /* Aligns perfectly with the top:50px bar end */
+  top: 10px; 
+  background: transparent;
+  border: 2px solid rgba(0, 210, 255, 0.3);
+  box-shadow: none;
+}
+
+/* CA (1st item) Progress Dot (At the middle) */
+.timeline-item:nth-child(1) .timeline-content::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  bottom: calc(50% - 15px); /* Exactly at the top tip of the 50% cyan fill */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   background: #fff;
   box-shadow: 0 0 10px #00d2ff, 0 0 20px var(--accent-cyan);
   z-index: 2;
 }
 
-/* B.Com (2nd item) dot - Completed */
+/* B.Com (2nd item) Completed Dot (At the Top) */
 .timeline-item:nth-child(2) .timeline-dot {
-  top: 8px;
+  top: 10px;
   background: var(--accent-cyan);
   box-shadow: 0 0 8px rgba(0,210,255,0.4);
 }
