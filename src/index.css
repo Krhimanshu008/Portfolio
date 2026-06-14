@@ -1397,9 +1397,9 @@ h6 {
 }
 .matrix-row {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 8px 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 .matrix-row:last-child {

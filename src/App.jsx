@@ -403,9 +403,9 @@ function App() {
                   <div className="matrix-row">
                     <span className="matrix-label learning">Learning</span>
                     <div className="matrix-tags">
-                      <span>AI / RAG</span>
-                      <span>ComfyUI</span>
-                      <span>Full-stack Web</span>
+                      <span>NLP </span>
+                      <span>RAG Vector/Graph </span>
+                      <span>Cloud Computing</span>
                     </div>
                   </div>
                 </div>
