@@ -431,55 +431,7 @@ h6 {
   border-left: 3px solid var(--accent-coral);
 }
 
-/* Timeline / Experience */
-.timeline-item {
-  margin-bottom: 40px;
-  position: relative;
-  padding-left: 20px;
-  border-left: 2px solid var(--accent-cyan);
-}
 
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--accent-cyan);
-}
-
-.timeline-role {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 5px;
-}
-
-.timeline-company {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 5px;
-}
-
-.timeline-date {
-  font-size: 0.9rem;
-  color: var(--accent-coral);
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.timeline-item ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.timeline-item li {
-  margin-bottom: 10px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
 
 /* Skills Grid */
 .skills-grid {
@@ -1343,13 +1295,14 @@ h6 {
   flex-direction: column;
   gap: 25px;
   padding-left: 20px;
+  border-left: 2px solid rgba(255,255,255,0.06);
   position: relative;
 }
 .timeline-container::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  left: -2px;
+  top: 6px;
   width: 2px;
   height: 50%;
   background: linear-gradient(to bottom, var(--accent-cyan), transparent);
