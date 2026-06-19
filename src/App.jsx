@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SkillJourneySection from './components/SkillJourneySection';
 import './index.css';
 
 function App() {
@@ -343,114 +344,9 @@ function App() {
       </section>
 
       {/* =========================================
-          JOURNEY & VISION SECTION
+          EDUCATION & SKILL JOURNEY SECTION
           ========================================= */}
-      <section id="journey" className="journey-section">
-        <div className="resume-bg"></div>
-        <div className="resume-content">
-          <div className="resume-block">
-            <h3>My Journey & Vision</h3>
-            <p className="about-text" style={{ marginBottom: '30px' }}>
-              A look into my academic progress, skill matrix, and the future projects I'm building.
-            </p>
-
-            <div className="journey-grid">
-              {/* Education Timeline */}
-              <div className="journey-card">
-                <h4 className="journey-card-title">Education & Academics</h4>
-                <div className="timeline-container">
-                  <div className="timeline-item">
-                    <div className="timeline-dot"></div>
-                    <div className="timeline-content">
-                      <h5>Chartered Accountancy (CA)</h5>
-                      <span className="timeline-date">Pursuing</span>
-                      <p>Navigating the complexities of advanced tax, audit, financial management & reporting while consistently overcoming challenges for the path I have selected.</p>
-                    </div>
-                  </div>
-                  <div className="timeline-item">
-                    <div className="timeline-dot"></div>
-                    <div className="timeline-content">
-                      <h5>Bachelor of Commerce (B.Com)</h5>
-                      <span className="timeline-date">Graduated</span>
-                      <p>Built the core foundation of accounting principles, business law, and economics.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Skill Matrix */}
-              <div className="journey-card">
-                <h4 className="journey-card-title">Skill Progression</h4>
-                <div className="skill-matrix">
-                  <div className="matrix-row">
-                    <span className="matrix-label mastered">Mastered</span>
-                    <div className="matrix-tags">
-                      <span>Bookkeeping</span>
-                      <span>Taxation</span>
-                      <span>Corporate Laws</span>
-                      <span>GST Compliance</span>
-                      <span>Financial Statement Analysis</span>
-                      <span>Direct Tax Planning & Advisory</span>
-                      <span>MIS Reporting</span>
-                    </div>
-                  </div>
-                  <div className="matrix-row">
-                    <span className="matrix-label attained">Attained</span>
-                    <div className="matrix-tags">
-                      <span>Workflow Optimization</span>
-                      <span>Process Automation (Excel / Scripts / APIs)</span>
-                      <span>Data Analytics</span>
-                      <span>API Integration</span>
-                    </div>
-                  </div>
-                  <div className="matrix-row">
-                    <span className="matrix-label learning">Learning</span>
-                    <div className="matrix-tags">
-                      <span>IFRS, Ind AS </span>
-                      <span>UAE VAT & CT </span>
-                      <span> Income Tax Law 2025 </span>
-                      <span>Transfer Pricing & International Taxation </span>
-                      <span>AI Applications in Finance </span>
-                      <span>RAG Vector/Graph, NLPs </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Applied Knowledge */}
-              <div className="journey-card full-width">
-                <h4 className="journey-card-title">Applied Knowledge</h4>
-                <div className="applied-grid">
-                  <div className="applied-item">
-                    <span className="applied-subject">Subject: Taxation & Audit</span>
-                    <span className="applied-arrow">&rarr;</span>
-                    <span className="applied-execution">Execution: Built automated compliance trackers & tax calculators.</span>
-                  </div>
-                  <div className="applied-item">
-                    <span className="applied-subject">Subject: Tech & AI</span>
-                    <span className="applied-arrow">&rarr;</span>
-                    <span className="applied-execution">Execution: Developing 'Novel Visualiser' & RAG-based document parsers.</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Future Ideas CTA */}
-              <div className="journey-card full-width ideas-cta-card">
-                <h4 className="journey-card-title">Future Ideas & Projects</h4>
-                <p style={{ color: '#ccc', marginBottom: '15px' }}>I am constantly brainstorming and building. Want to see what's next in the pipeline?</p>
-                <div className="ideas-buttons">
-                  <button className="view-ideas-btn" onClick={() => setShowFutureIdeasModal(true)}>
-                    View Future Ideas &rarr;
-                  </button>
-                  <button className="collab-btn" onClick={() => setShowCollabModal(true)}>
-                    Let's Collaborate 🤝
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SkillJourneySection />
 
       {/* Debate Skill Mini Tab */}
       {showDebate && (
